@@ -15,8 +15,8 @@
 - [Gentil](#gentil)
 - [General info](#general-info)
 - [Why build this?](#why-build-this)
-- [Setup](#setup)
 - [Repository overview](#repository-overview)
+- [Setup](#setup)
 
 
 
@@ -28,8 +28,8 @@ This project is a clean little utility package for generating Go programs
 * It is cleaner to have these functions packaged away.
 
 
-## Setup
-No setup, just use them.
+
+
 
 ## Repository overview
 ```
@@ -39,5 +39,8 @@ No setup, just use them.
 ├── text (text functions)
 ```
 
-<h1 align="center">Hi 👋, I'm Zachary Endrulat</h1>
-<h3 align="center">I love Go</h3>
+## Setup
+Just import it's packages.
+```
+go get github.com/golangast/gentil
+```

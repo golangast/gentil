@@ -1,4 +1,4 @@
-module gentil
+module github.com/golangast/gentil
 
 go 1.18
 
