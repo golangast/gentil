@@ -24,7 +24,7 @@ func Makefile(p string) (*os.File, error) {
 	return file, nil
 }
 
-//make folder and file
+//make folder and file (sometimes needed to make sure go knows where they are or if they are generated yet)
 func Filefolder(folder, file string) (*os.File, error) {
 	var ct *os.File
 	if _, err := os.Stat(folder + file); errors.Is(err, os.ErrNotExist) {
