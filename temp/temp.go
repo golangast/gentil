@@ -1,4 +1,4 @@
-package temp
+package gentil
 
 import (
 	"os"

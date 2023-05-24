@@ -1,4 +1,4 @@
-package ff
+package gentil
 
 import (
 	"errors"
