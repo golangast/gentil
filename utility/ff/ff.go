@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"os"
+	"path/filepath"
 )
 
 // make any folder
@@ -26,11 +27,19 @@ func Makefile(p string) (*os.File, error) {
 
 //make folder and file (sometimes needed to make sure go knows where they are or if they are generated yet)
 func Filefolder(folder, file string) (*os.File, error) {
-	var ct *os.File
-	if _, err := os.Stat(folder + file); errors.Is(err, os.ErrNotExist) {
-		Makefolder(folder + file)
-		ct, err := Makefile(folder + file + "/create" + file + ".go")
+
+	p := filepath.FromSlash(folder + "/" + file)
+	if _, err := os.Stat(p); errors.Is(err, os.ErrNotExist) {
+		Makefolder(folder)
+		ct, err := Makefile(p)
+		return ct, err
+	} else {
+		ct, err := Makefile(p)
 		return ct, err
 	}
-	return ct, nil
+
+}
+func Deletefile(t string) error {
+	e := os.Remove(t)
+	return e
 }

@@ -2,6 +2,8 @@ package gentil
 
 import (
 	"bytes"
+	"fmt"
+	"log"
 	"os/exec"
 	"runtime"
 )
@@ -45,4 +47,23 @@ func Reload() (string, string, error) {
 	err, out, errout := Shellout("pwd && cd app && go mod tidy && go mod vendor && go install && go build")
 	return out, err, errout
 
+}
+
+// pulls down dependencies + installs echo
+func Pulldowneverything(p string) {
+	out, errout, err := Shellout("cd .. && cd " + p + " && go mod init " + p + "&& go mod tidy && go mod vendor && go install && go build")
+	if err != nil {
+		log.Printf("error: %v\n", err)
+	}
+	fmt.Println(out)
+	fmt.Println("--- errs ---")
+	fmt.Println(errout)
+
+	outs, errouts, err := Shellout("cd .. && cd " + p + " && go install github.com/labstack/echo/v4 && go install github.com/labstack/echo/v4/middleware && go get github.com/labstack/gommon/log && go mod tidy && go mod vendor && go install && go build")
+	if err != nil {
+		log.Printf("error: %v\n", err)
+	}
+	fmt.Println(outs)
+	fmt.Println("--- errs ---")
+	fmt.Println(errouts)
 }
