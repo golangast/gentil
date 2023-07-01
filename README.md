@@ -44,3 +44,11 @@ Just import it's packages.
 ```
 go get github.com/golangast/gentil
 ```
+To run the functions import the package you want
+```
+. "github.com/golangast/gentil/utility/ff"
+```
+Then call the function
+```
+Filefolder("start", "starter")
+```
