@@ -4,7 +4,7 @@ import (
 	"os"
 	"text/template"
 
-	"github.com/Masterminds/sprig"
+	"github.com/Masterminds/sprig/v3"
 )
 
 // write any template to file
