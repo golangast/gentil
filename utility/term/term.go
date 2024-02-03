@@ -1,4 +1,4 @@
-package gentil
+package term
 
 import (
 	"bytes"
@@ -8,7 +8,7 @@ import (
 	"runtime"
 )
 
-//used for terminal
+// used for terminal
 func Shellout(command string) (string, string, error) {
 	var stdout bytes.Buffer
 	var stderr bytes.Buffer
