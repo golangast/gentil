@@ -1,6 +1,7 @@
 package text
 
 import (
+	"bufio"
 	"bytes"
 	"fmt"
 	"io"
@@ -24,6 +25,34 @@ func UpdateText(f string, o string, n string) error {
 	}
 
 	return nil
+}
+
+func FindLineNReturn(p, str string) string {
+	// Open file for reading.
+	var file, err = os.OpenFile(p, os.O_RDWR, 0644)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer file.Close()
+
+	fileScanner := bufio.NewScanner(file)
+
+	fileScanner.Split(bufio.ScanLines)
+
+	for fileScanner.Scan() {
+		fmt.Println(fileScanner.Text())
+		if strings.Contains(string(fileScanner.Text()), str) {
+			return string(fileScanner.Text())
+		}
+	}
+
+	// Break if error occured
+	if err != nil && err != io.EOF {
+		fmt.Println(err)
+
+	}
+
+	return ""
 }
 func FindTextNReturn(p, str string) string {
 	// Open file for reading.
